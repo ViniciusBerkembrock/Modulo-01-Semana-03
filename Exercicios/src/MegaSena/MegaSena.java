@@ -26,12 +26,6 @@ public class MegaSena {
         }
     }
 
-    //public void imprimirConcursosEmOrdemDeNumero() {
-    //    Collections.sort(concursos);
-    //    for(Concurso concurso: concursos){
-    //        System.out.println(concurso);
-    //    }
-    //}
 
     public void verificarSeTeveSorteio() {
         System.out.println("Informe a data (formato = dd/MM/yyyy): ");
@@ -61,7 +55,6 @@ public class MegaSena {
         int[] numeros = { Integer.parseInt(split[0].trim()), Integer.parseInt(split[1].trim()), Integer.parseInt(split[2].trim()),
                 Integer.parseInt(split[3].trim()), Integer.parseInt(split[4].trim()), Integer.parseInt(split[5].trim()) };
         List<Integer> listaNumeros = ConversorArrayParaLista.converterOrdenado(numeros);
-        // iterar nos concursos
         int[] dezenasSorteados = null;
         Integer nroDoConcurso = null;
         for(Concurso concurso: concursos) {
@@ -81,7 +74,6 @@ public class MegaSena {
     }
 
     public void imprimirNrosFrequentes() {
-        // criando e populando Map de nros sorteados e respectivas quantidade em que foram sorteados
         Map<Integer, Integer> map = new HashMap<>();
         for (Concurso concurso: concursos) {
             int[] sorteados = concurso.getSorteados();
@@ -91,7 +83,6 @@ public class MegaSena {
                 map.put(nro, qtdAtual + 1);
             }
         }
-        // calculado as maiores e menores quantidades
         int nroMaisFrequente = 1;
         int nroMenosFrequente = 1;
         int qtdMaisFrequente = 0;
@@ -114,8 +105,7 @@ public class MegaSena {
     }
 
     public void imprimirNroMaisAtrasado() {
-        // criando e populando map de nros sorteados e respectivas ultima data em que foram sorteados (data mais recente de sorteio)
-        Map<Integer, LocalDate> map = new HashMap<>();
+       Map<Integer, LocalDate> map = new HashMap<>();
         for (Concurso concurso: concursos) {
             int[] sorteados = concurso.getSorteados();
             for (int i = 0; i < sorteados.length; i++) {
